@@ -16,6 +16,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://cloudabap.com"),
 
+  alternates: {
+    canonical: "https://cloudabap.com",
+  },
+
   title: {
     default: "CloudABAP - RAP, ABAP Cloud, CAP & SAP BTP Tutorials",
     template: "%s | CloudABAP",
@@ -55,6 +59,15 @@ export const metadata: Metadata = {
     siteName: "CloudABAP",
     locale: "en_US",
     type: "website",
+
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "CloudABAP",
+      },
+    ],
   },
 
   twitter: {
@@ -62,6 +75,7 @@ export const metadata: Metadata = {
     title: "CloudABAP",
     description:
       "SAP RAP, ABAP Cloud, CAP, SAP BTP and S/4HANA Public Cloud Tutorials",
+    images: ["/og-image.png"],
   },
 
   robots: {
@@ -85,6 +99,41 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Syed Shadab Hussain",
+              url: "https://cloudabap.com",
+              jobTitle: "SAP Technical Architect",
+              worksFor: {
+                "@type": "Organization",
+                name: "CloudABAP",
+              },
+              sameAs: ["https://www.linkedin.com/in/shadabsyedhussain/"],
+            }),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Syed Shadab Hussain",
+              url: "https://cloudabap.com",
+              jobTitle: "SAP Technical Architect",
+              worksFor: {
+                "@type": "Organization",
+                name: "CloudABAP",
+              },
+            }),
+          }}
+        />
+
         <main className="flex-grow">{children}</main>
 
         <Footer />
