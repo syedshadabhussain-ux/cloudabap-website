@@ -4,17 +4,26 @@ interface ImageBlockProps {
   src: string;
   alt: string;
   caption?: string;
+  priority?: boolean;
 }
 
-export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
+export default function ImageBlock({
+  src,
+  alt,
+  caption,
+  priority = false,
+}: ImageBlockProps) {
   return (
-    <figure className="my-10">
+    <figure className="my-8">
       <Image
         src={src}
         alt={alt}
         width={1200}
-        height={700}
-        className="rounded-2xl border border-gray-200 shadow-sm w-full"
+        height={675}
+        quality={85}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+        priority={priority}
+        className="w-full h-auto rounded-xl border border-gray-200"
       />
 
       {caption && (

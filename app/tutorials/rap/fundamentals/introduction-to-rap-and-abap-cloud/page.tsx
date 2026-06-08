@@ -54,7 +54,8 @@ export default function IntroductionToRAPAndABAPCloudPage() {
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/RAP Architechture Overview CloudABAP.com.png"
+        priority
+        src="/images/rap/fundamentals/RAP Architechture Overview CloudABAP.com.webp"
         alt="RAP Architecture Overview"
         caption="High-Level Architecture of the ABAP RESTful Application Programming Model"
       />
@@ -177,7 +178,7 @@ export default function IntroductionToRAPAndABAPCloudPage() {
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/RAP & Cloud ABAP Evolution CloudABAP.com.png"
+        src="/images/rap/fundamentals/RAP & Cloud ABAP Evolution CloudABAP.com.webp"
         alt="SAP Evolution"
         caption="Evolution of SAP Technology leading to ABAP Cloud and RAP"
       />
@@ -327,7 +328,7 @@ export default function IntroductionToRAPAndABAPCloudPage() {
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/RAP in ABAP Cloud CloudABAP.com.png"
+        src="/images/rap/fundamentals/RAP in ABAP Cloud CloudABAP.com.webp"
         alt="RAP Architecture"
         caption="High-Level RAP Architecture"
       />
@@ -370,7 +371,7 @@ export default function IntroductionToRAPAndABAPCloudPage() {
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/RAP Development Flow CloudABAP.com.png"
+        src="/images/rap/fundamentals/RAP Development Flow CloudABAP.com.webp"
         alt="RAP Development Flow"
         caption="End-to-End RAP Development Flow"
       />
@@ -590,7 +591,7 @@ Service       : ZUI_EMPLOYEE`}
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/Read Only vs Transactional app CloudABAP.com.png"
+        src="/images/rap/fundamentals/Read Only vs Transactional app CloudABAP.com.webp"
         alt="Read Only vs Transactional"
         caption="Read-Only RAP vs Transactional RAP"
       />
@@ -692,7 +693,7 @@ Service       : ZUI_EMPLOYEE`}
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/Business Object CloudABAP.com.png"
+        src="/images/rap/fundamentals/Business Object CloudABAP.com.webp"
         alt="RAP Business Object"
         caption="Business Objects are the foundation of RAP applications"
       />
@@ -845,7 +846,7 @@ Service       : ZUI_EMPLOYEE`}
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/Managed vs Unmanaged CloudABAP.com.png"
+        src="/images/rap/fundamentals/Managed vs Unmanaged CloudABAP.com.webp"
         alt="Managed vs Unmanaged RAP"
         caption="Managed RAP vs Unmanaged RAP Development Approaches"
       />
@@ -1004,7 +1005,7 @@ Service       : ZUI_EMPLOYEE`}
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/RAP Runtime Working CloudABAP.com.png"
+        src="/images/rap/fundamentals/RAP Runtime Working CloudABAP.com.webp"
         alt="RAP Runtime Architecture"
         caption="How Requests Travel Through the RAP Runtime"
       />
@@ -1219,7 +1220,7 @@ Service       : ZUI_EMPLOYEE`}
       </ContentSection>
 
       <ImageBlock
-        src="/images/rap/fundamentals/ABAP Cloud Development Model CloudABAP.com.png"
+        src="/images/rap/fundamentals/ABAP Cloud Development Model CloudABAP.com.webp"
         alt="ABAP Cloud Development Model"
         caption="ABAP Cloud Development Model and Clean Core Architecture"
       />
