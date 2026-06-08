@@ -1,9 +1,9 @@
 export default function RAPFundamentalsPage() {
   const tutorials = [
     {
-      title: "Introduction to RAP",
-      slug: "introduction-to-rap",
-      duration: "10 min",
+      title: "Introduction to RAP and ABAP Cloud",
+      slug: "introduction-to-rap-and-abap-cloud",
+      duration: "25 min",
     },
     {
       title: "CDS View Entity",
