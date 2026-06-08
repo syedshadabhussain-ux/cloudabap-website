@@ -13,7 +13,11 @@ async function convertImages() {
     const input = path.join(imageDir, file);
     const output = path.join(imageDir, file.replace(".png", ".webp"));
 
-    await sharp(input).webp({ quality: 90 }).toFile(output);
+    await sharp(input)
+      .webp({
+        lossless: true,
+      })
+      .toFile(output);
 
     console.log(`Converted: ${file}`);
   }

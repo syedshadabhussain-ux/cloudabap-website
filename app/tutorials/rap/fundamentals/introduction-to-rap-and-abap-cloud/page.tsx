@@ -163,6 +163,98 @@ export default function IntroductionToRAPAndABAPCloudPage() {
         </p>
       </ArchitectNote>
 
+      <ContentSection title="Interaction Phase and Save Sequence">
+        <p>
+          One of the most important architectural concepts in RAP is the
+          separation between the Interaction Phase and the Save Sequence.
+          Understanding this separation explains why RAP applications are
+          scalable, transactional and cloud-ready.
+        </p>
+
+        <p>
+          During the Interaction Phase, RAP processes user interactions in
+          memory using a transactional buffer. Whenever a user changes a field,
+          triggers an action or performs a business operation, RAP executes
+          business logic without immediately updating the database.
+        </p>
+
+        <p>
+          This allows RAP to validate data, derive values, execute actions and
+          maintain transactional consistency while minimizing unnecessary
+          database operations.
+        </p>
+
+        <p>
+          The Save Sequence begins only when the user explicitly clicks Save.
+          RAP then executes a controlled persistence process, performs final
+          consistency checks and writes the accumulated changes to SAP HANA as a
+          single transaction.
+        </p>
+      </ContentSection>
+
+      <ImageBlock
+        src="/images/rap/fundamentals/Interaction Phase & Save Sequence CloudABAP.com.webp"
+        alt="RAP Interaction Phase and Save Sequence"
+        caption="RAP separates business interaction processing from database persistence"
+      />
+
+      <RealWorldExample title="Real-World Example: Sales Order Processing">
+        <p>Consider a Sales Order application built using RAP.</p>
+
+        <p>
+          A user changes the Customer, Quantity and Delivery Date multiple times
+          before saving the document. During this process RAP continuously
+          validates business rules, recalculates totals, derives values and
+          updates the transactional buffer.
+        </p>
+
+        <p>Despite multiple user interactions, no database update occurs.</p>
+
+        <p>
+          Only when the user clicks Save does RAP execute the Save Sequence and
+          persist the final version of the Sales Order to SAP HANA.
+        </p>
+
+        <p>
+          This approach improves performance, reduces database load and
+          guarantees transactional consistency.
+        </p>
+      </RealWorldExample>
+
+      <TableBlock
+        headers={["Aspect", "Interaction Phase", "Save Sequence"]}
+        rows={[
+          ["When it runs", "Every user action", "Only when Save is clicked"],
+          ["Data location", "Transactional Buffer", "Database"],
+          [
+            "Execution frequency",
+            "Can execute many times",
+            "Runs once per save",
+          ],
+          ["Database updates", "Not allowed", "Performed during persistence"],
+          ["Rollback capability", "Yes", "Only before final commit"],
+          [
+            "Purpose",
+            "Business processing and validations",
+            "Persistence and transaction completion",
+          ],
+        ]}
+      />
+
+      <ArchitectNote>
+        <p>
+          A common misconception is that RAP updates the database every time a
+          field changes.
+        </p>
+
+        <p>
+          In reality, RAP uses an in-memory transactional buffer during the
+          Interaction Phase. Database writes occur only during the Save
+          Sequence, allowing RAP to provide Draft Handling, EML processing,
+          Feature Control and transactional consistency.
+        </p>
+      </ArchitectNote>
+
       <ContentSection title="The Evolution of SAP Technology">
         <p>RAP did not appear overnight.</p>
 
@@ -1455,6 +1547,12 @@ Service       : ZUI_EMPLOYEE`}
           level="Architect"
           question="What is the relationship between RAP and ABAP Cloud?"
           answer="ABAP Cloud is the overall development model. RAP is the transactional application framework within ABAP Cloud used to implement Business Objects and services."
+        />
+
+        <InterviewQuestion
+          level="Architect"
+          question="Why does RAP separate the Interaction Phase from the Save Sequence?"
+          answer="The separation allows RAP to execute business logic, validations and determinations in memory before performing a single controlled database transaction. This improves performance, supports Draft Handling and ensures transactional consistency."
         />
 
         <h3 className="text-2xl font-semibold text-slate-900 mt-10 mb-4">
