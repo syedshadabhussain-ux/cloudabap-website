@@ -11,29 +11,48 @@ export default function InterviewQuestion({
   followup,
   level = "Beginner",
 }: InterviewQuestionProps) {
+  const levelStyles = {
+    Beginner: "bg-green-100 text-green-700",
+    Experienced: "bg-amber-100 text-amber-700",
+    Architect: "bg-purple-100 text-purple-700",
+  };
+
   return (
-    <div className="my-8 rounded-xl border border-blue-200 bg-blue-50 p-6">
-      <div className="mb-3 flex items-center gap-2">
-        <span className="rounded-full bg-blue-600 px-3 py-1 text-sm text-white">
+    <div className="my-8 rounded-2xl border border-gray-200 bg-gradient-to-br from-white to-slate-50 shadow-sm overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center gap-3 px-6 py-5 border-b border-slate-200 bg-slate-50">
+        <span
+          className={`px-3 py-1 rounded-full text-xs font-semibold ${levelStyles[level]}`}
+        >
           {level}
         </span>
 
-        <h4 className="font-bold text-lg">Interview Question</h4>
+        <span className="text-base font-semibold text-slate-700">
+          Interview Question
+        </span>
       </div>
 
-      <p className="mb-3">
-        <strong>Q:</strong> {question}
-      </p>
+      {/* Content */}
+      <div className="p-6">
+        <h4 className="text-xl font-semibold text-slate-900 leading-8 mb-4">
+          {question}
+        </h4>
 
-      <p className="mb-3">
-        <strong>Answer:</strong> {answer}
-      </p>
-
-      {followup && (
-        <p className="text-gray-700">
-          <strong>Follow-Up:</strong> {followup}
+        <p className="text-base text-slate-700 leading-7">
+          <span className="font-semibold text-slate-900">Answer:</span> {answer}
         </p>
-      )}
+
+        {followup && (
+          <div className="mt-5 pt-5 border-t border-slate-200">
+            <p className="text-base text-slate-700 leading-7">
+              <span className="font-semibold text-slate-900">
+                Architect Note:
+              </span>{" "}
+              {followup}
+            </p>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

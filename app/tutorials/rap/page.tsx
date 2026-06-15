@@ -43,6 +43,25 @@ export default function RAPPage() {
             </div>
           </a>
 
+          {/* CDS Fundamentals */}
+
+          <a
+            href="/tutorials/rap/cds-fundamentals"
+            className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-sky-500"
+          >
+            <h3 className="text-2xl font-bold mb-4">CDS Fundamentals</h3>
+
+            <p className="text-gray-600 mb-6">
+              Learn CDS architecture, SAP HANA concepts, Code Pushdown, VDM,
+              data modeling and CDS design principles.
+            </p>
+
+            <div className="text-sky-600 font-semibold flex items-center">
+              Start Learning
+              <FaArrowRight className="ml-2" />
+            </div>
+          </a>
+
           {/* Managed RAP */}
 
           <a

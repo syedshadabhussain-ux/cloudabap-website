@@ -7,6 +7,8 @@ type Props = {
   category: string;
   duration: string;
   children: React.ReactNode;
+  sidebar?: React.ReactNode;
+  breadcrumbPath?: string;
 };
 
 export default function TutorialLayout({
@@ -14,15 +16,16 @@ export default function TutorialLayout({
   category,
   duration,
   children,
+  sidebar,
+  breadcrumbPath,
 }: Props) {
   return (
     <main className="max-w-7xl mx-auto px-6 py-12">
       <TutorialBreadcrumb
         category={category}
-        path="/tutorials/rap/fundamentals"
+        path={breadcrumbPath || "/tutorials/rap/fundamentals"}
       />
 
-      {/* Header */}
       <div className="mb-12">
         <h1 className="text-5xl font-bold text-gray-900 mb-4">{title}</h1>
 
@@ -32,14 +35,11 @@ export default function TutorialLayout({
         </div>
       </div>
 
-      {/* Content Area */}
       <div className="grid lg:grid-cols-12 gap-10">
-        {/* Sidebar */}
         <aside className="lg:col-span-3">
-          <TutorialSidebar />
+          {sidebar || <TutorialSidebar />}
         </aside>
 
-        {/* Main Content */}
         <section className="lg:col-span-9">
           <article className="bg-white rounded-3xl border border-gray-100 shadow-sm p-10">
             {children}
