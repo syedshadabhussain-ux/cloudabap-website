@@ -62,6 +62,25 @@ export default function RAPPage() {
             </div>
           </a>
 
+          {/* CDS View Entity */}
+
+          <a
+            href="/tutorials/rap/cds-view-entity"
+            className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border-t-4 border-teal-500"
+          >
+            <h3 className="text-2xl font-bold mb-4">CDS View Entity</h3>
+
+            <p className="text-gray-600 mb-6">
+              Build CDS View Entities with step-by-step tutorials on
+              expressions, functions, associations and data modeling techniques.
+            </p>
+
+            <div className="text-teal-600 font-semibold flex items-center">
+              Start Learning
+              <FaArrowRight className="ml-2" />
+            </div>
+          </a>
+
           {/* Managed RAP */}
 
           <a

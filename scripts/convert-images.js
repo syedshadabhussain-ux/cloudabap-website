@@ -2,39 +2,70 @@ const sharp = require("sharp");
 const fs = require("fs");
 const path = require("path");
 
-const imageDir = "./public/images/rap/cds-fundamentals";
+const force = process.argv.includes("--force");
 
-async function convertSingleFile(filePath) {
-  const output = filePath.replace(".png", ".webp");
+async function convertFile(filePath) {
+  const ext = path.extname(filePath).toLowerCase();
 
-  await sharp(filePath).webp({ lossless: true }).toFile(output);
+  if (![".png", ".jpg", ".jpeg"].includes(ext)) {
+    return;
+  }
 
-  console.log(`Converted: ${path.basename(filePath)}`);
+  const output = filePath.replace(/\.(png|jpg|jpeg)$/i, ".webp");
+
+  if (!force && fs.existsSync(output)) {
+    console.log(`⏩ Skipped (already exists): ${path.basename(output)}`);
+    return;
+  }
+
+  await sharp(filePath)
+    .webp({
+      lossless: true,
+    })
+    .toFile(output);
+
+  console.log(`✔ Converted: ${path.basename(filePath)}`);
 }
 
-async function convertFolder() {
-  const files = fs.readdirSync(imageDir);
+async function convertDirectory(dir) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
 
-  for (const file of files) {
-    if (!file.toLowerCase().endsWith(".png")) continue;
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
 
-    const input = path.join(imageDir, file);
-    const output = path.join(imageDir, file.replace(/\.png$/i, ".webp"));
-
-    await sharp(input).webp({ lossless: true }).toFile(output);
-
-    console.log(`Converted: ${file}`);
+    if (entry.isDirectory()) {
+      await convertDirectory(fullPath);
+    } else {
+      await convertFile(fullPath);
+    }
   }
 }
 
 async function main() {
-  const filePath = process.argv[2];
+  // Default location if nothing is passed
+  const target = process.argv[2] || "./public/images";
 
-  if (filePath) {
-    await convertSingleFile(filePath);
-  } else {
-    await convertFolder();
+  const fullPath = path.resolve(target);
+
+  if (!fs.existsSync(fullPath)) {
+    console.error(`❌ Path not found: ${fullPath}`);
+    process.exit(1);
   }
+
+  const stat = fs.statSync(fullPath);
+
+  if (stat.isDirectory()) {
+    console.log(`📂 Converting images in folder: ${target}\n`);
+    await convertDirectory(fullPath);
+  } else {
+    console.log(`🖼️ Converting file: ${target}\n`);
+    await convertFile(fullPath);
+  }
+
+  console.log("\n🎉 Conversion Complete!");
 }
 
-main().catch(console.error);
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});
